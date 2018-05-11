@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:id="@+id/text_container"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingEnd="@dimen/screen_edge_dist"
+    android:paddingLeft="@dimen/screen_edge_dist"
+    android:paddingRight="@dimen/screen_edge_dist"
+    android:paddingStart="@dimen/screen_edge_dist">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_item_padding_horizontal"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:textAllCaps="true"
+            android:textColor="@color/colorDetailsText"
+            android:textSize="12sp"
+            tools:text="World news" />
+
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textColor="@color/colorTitleText"
+            android:textSize="16sp"
+            tools:text="Very very very very long placeholder title that should sure wrap to more than 3 lines of text" />
+
+        <TextView
+            android:id="@+id/item_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            tools:text="Article's author"
+            android:textSize="@dimen/definition_text_size"
+            android:textColor="@color/colorTitleText"/>
+
+    </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:layout_marginLeft="@dimen/text_item_padding_horizontal"
+            android:layout_marginStart="@dimen/text_item_padding_vertical"
+            tools:text="2018-05-02"
+            android:textSize="@dimen/definition_text_size"
+            android:textColor="@color/colorTitleText"/>
+
+</LinearLayout>
