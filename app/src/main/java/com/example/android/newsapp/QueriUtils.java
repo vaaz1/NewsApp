@@ -22,10 +22,9 @@ public class QueriUtils {
 
     private static final String LOG_TAG = QueriUtils.class.getSimpleName();
 
-    private QueriUtils(){
+    private QueriUtils() {
 
     }
-
 
     public static List<NewsItem> fetchNewsData(String requestUrl) {
         // Create URL object
@@ -120,7 +119,7 @@ public class QueriUtils {
 
     public static List<NewsItem> extractFeatureFromJson(String newsJSON) {
 
-        if(TextUtils.isEmpty(newsJSON)){
+        if (TextUtils.isEmpty(newsJSON)) {
             return null;
         }
 
@@ -137,23 +136,22 @@ public class QueriUtils {
             // extract response JSONArray
             JSONObject newsArray = baseJsonResponse.getJSONObject("response");
             // Extract “features” JSONArray
-            JSONArray features  = newsArray.getJSONArray("results");
+            JSONArray features = newsArray.getJSONArray("results");
 
             // Loop through each feature in the array
-            for(int i=0; i<features.length(); i++){
+            for (int i = 0; i < features.length(); i++) {
                 // Get newsitem JSONObject at position i
                 JSONObject newsitem = features.getJSONObject(i);
                 // Extract “webTitle” for title
                 String webTitle = newsitem.getString("webTitle");
                 String title;
                 String author = "";
-                if(webTitle.contains("|")){
+                if (webTitle.contains("|")) {
                     int endOfTitle = webTitle.indexOf("|");
-                    title = webTitle.substring(0,endOfTitle);
+                    title = webTitle.substring(0, endOfTitle);
                     // Extract author
-                    author = "by" + webTitle.substring(endOfTitle+1, webTitle.length());
-                }
-                else {
+                    author = "by" + webTitle.substring(endOfTitle + 1, webTitle.length());
+                } else {
                     title = webTitle;
                 }
                 // Extract “sectionName” for section
@@ -161,11 +159,11 @@ public class QueriUtils {
                 // Extract "webPublicationDate" for publication date
                 String time = newsitem.getString("webPublicationDate");
                 int endOfDate = time.indexOf("T");
-                String publicationDate = time.substring(0,endOfDate);
+                String publicationDate = time.substring(0, endOfDate);
                 // Extract the value for the url
                 String url = newsitem.getString("webUrl");
                 // Create News java object
-                NewsItem newsItem = new NewsItem(title,section,publicationDate,author,url);
+                NewsItem newsItem = new NewsItem(title, section, publicationDate, author, url);
                 // Add newsitem to list of news
                 news.add(newsItem);
             }

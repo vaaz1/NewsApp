@@ -38,11 +38,11 @@ public class NewsItem {
         return mSection;
     }
 
-    public String getmTime(){
+    public String getmTime() {
         return mTime;
     }
 
-    public String getmAuthor(){
+    public String getmAuthor() {
         return mAuthor;
     }
 

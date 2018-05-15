@@ -22,7 +22,7 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        if(convertView==null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_item, parent, false);
         }
@@ -33,7 +33,7 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
         textContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url =currentNewsItem.getmUrl();
+                String url = currentNewsItem.getmUrl();
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 view.getContext().startActivity(intent);
@@ -51,8 +51,10 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
         TextView authorTextView = (TextView) convertView.findViewById(R.id.item_author);
         authorTextView.setText(currentNewsItem.getmAuthor());
-        if(currentNewsItem.getmAuthor().isEmpty()){
+        if (currentNewsItem.getmAuthor().isEmpty()) {
             authorTextView.setVisibility(View.GONE);
+        } else {
+            authorTextView.setVisibility(View.VISIBLE);
         }
 
         return convertView;
