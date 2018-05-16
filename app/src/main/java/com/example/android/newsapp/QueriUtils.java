@@ -21,6 +21,8 @@ import java.util.List;
 public class QueriUtils {
 
     private static final String LOG_TAG = QueriUtils.class.getSimpleName();
+    private static final int readTimeout = 10000;
+    private static final int connectTimeout = 15000;
 
     private QueriUtils() {
 
@@ -73,14 +75,14 @@ public class QueriUtils {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000 /* milliseconds */);
-            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            urlConnection.setReadTimeout(readTimeout /* milliseconds */);
+            urlConnection.setConnectTimeout(connectTimeout /* milliseconds */);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
             // If the request was successful (response code 200),
             // then read the input stream and parse the response.
-            if (urlConnection.getResponseCode() == 200) {
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
