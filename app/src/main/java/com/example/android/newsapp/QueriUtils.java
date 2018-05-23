@@ -147,15 +147,16 @@ public class QueriUtils {
                 // Extract “webTitle” for title
                 String webTitle = newsitem.getString("webTitle");
                 String title;
-                String author = "";
                 if (webTitle.contains("|")) {
                     int endOfTitle = webTitle.indexOf("|");
                     title = webTitle.substring(0, endOfTitle);
-                    // Extract author
-                    author = "by" + webTitle.substring(endOfTitle + 1, webTitle.length());
                 } else {
                     title = webTitle;
                 }
+                // Extract author
+                JSONArray tagsArray = newsitem.getJSONArray("tags");
+                JSONObject tagsObject = tagsArray.getJSONObject(0);
+                String author = "by " + tagsObject.getString("webTitle");
                 // Extract “sectionName” for section
                 String section = newsitem.getString("sectionName");
                 // Extract "webPublicationDate" for publication date

@@ -30,7 +30,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
     public static final int NEWS_LOADER_ID = 1;
     private static final String REQUEST_URL = "http://content.guardianapis.com/search?";
     private static final String PAGE_SIZE = "25";
-    private static final String API_KEY = "431fa36e-151d-4260-afcc-0009afa0e57b";
+    private static final String API_KEY = "test";
     ProgressBar progressBar;
     boolean isConnected;
     private TextView mEmptyStateTextView;
@@ -88,10 +88,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         uriBuilder.appendQueryParameter("order-by", orderBy);
         uriBuilder.appendQueryParameter("page-size", PAGE_SIZE);
         uriBuilder.appendQueryParameter("from-date", newestDate);
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("q",searchKeyword);
         uriBuilder.appendQueryParameter("api-key", API_KEY);
-
-        Toast.makeText(this, uriBuilder.toString(), Toast.LENGTH_LONG).show();
 
         Log.v("NewsActivity", "URL: " + uriBuilder.toString());
         // Return the completed uri http://content.guardianapis.com/search?order-by=newest&page-size=25&q=GOOGLE&api-key=431fa36e-151d-4260-afcc-0009afa0e57b
